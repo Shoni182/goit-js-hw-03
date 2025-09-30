@@ -3,6 +3,9 @@
 
 //?Якщо кількість елементів у новому масиві перевищує maxLength, функція повинна повернути копію масиву з довжиною maxLength елементів.
 //?В іншому випадку функція повинна повернути весь новий масив.
+
+//! Функція не повертає жодного результату, якщо умова sumArray.length >= maxLength не виконується. Зараз функція повертає масив лише у випадку, якщо його потрібно обрізати, інакше вона має повертати повністю об'єднаний масив.
+
 console.log("");
 console.log("Завдання 2. Композиція масивів");
 console.log("⬇    ⬇    ⬇");
@@ -10,8 +13,10 @@ console.log("⬇    ⬇    ⬇");
 
 function makeArray(firstArray, secondArray, maxLength) {
   let sumArray = firstArray.concat(secondArray);
-  if (sumArray.length >= maxLength) {
+  if (sumArray.length > maxLength) {
     return (sumArray = sumArray.slice(0, maxLength));
+  } else {
+    return sumArray;
   }
 }
 
@@ -23,3 +28,7 @@ console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Ear
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
 
 console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+
+console.log(
+  makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 10)
+); // Обʼєднані масиви
